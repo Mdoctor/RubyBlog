@@ -52,11 +52,11 @@
 	  </ul>
           <ul class="nav navbar-nav navbar-right">
 		<% if current_user -%>
-			<%= drop_down current_user.email do %>
+			<%= drop_down current_user.username do %>
 		      <%= menu_item "edit", edit_user_registration_path %>
 		      <%= drop_down_divider %>
-		      <%= menu_item "sign out", destroy_user_session_path, :method => :delete %>
-		<% end %>
+		      <%= menu_item "sign out", destroy_user_session_path %>
+			<% end %>
 		<% else %>
 			 <li><%= link_to "sign in", new_user_session_path %></li>
 		<% end -%>
