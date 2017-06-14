@@ -52,17 +52,10 @@
 	</ul>
 		  <ul class="nav navbar-nav navbar-right">
         <% if current_user -%>
-		  		<li class="dropdown">
-					<a id="dLabel" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %>
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu" aria-labelledby="dLabel">
-            <li><%= link_to "edit user", edit_user_registration_path%></li>
-            <li role="separator" class="divider"></li>
-						<li><%= link_to "sign out", destroy_user_session_path %></li>
-					</ul>
-          </li>
+            <p class="navbar-text"><%= current_user.email %></p>
+						<button type="button" class="btn btn-danger"><%= link_to "sign out", destroy_user_session_path %></button>
         <% else %>
-      <li><%= link_to "sign in", new_user_session_path %></li>
+      <button type="button" class="btn btn-danger"><%= link_to "sign in", new_user_session_path %></button>
 			</ul>
 			
 		<% end -%>
