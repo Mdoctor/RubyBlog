@@ -55,7 +55,7 @@
 			<%= drop_down current_user.email do %>
 		      <%= menu_item "edit", edit_user_registration_path %>
 		      <%= drop_down_divider %>
-		      <%= menu_item "sign out", destroy_user_session_path %>
+		      <%= menu_item "sign out", destroy_user_session_path, :method => :delete %>
 		<% end %>
 		<% else %>
 			 <li><%= link_to "sign in", new_user_session_path %></li>
