@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'products/show'
+
+  get 'welcome/index'
+
   devise_for :users
   root :to => "welcome#index"
   get 'welcome/index'
