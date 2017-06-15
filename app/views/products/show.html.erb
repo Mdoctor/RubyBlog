@@ -15,29 +15,52 @@
         </tr>
       </thead>
       <tbody>
+	<form id="1" action="www.baidu.com" accept-charset="UTF-8" method="post">
         <tr>
           <th scope="row">1</th>
 	  <td><a class="text-primary" href="#" target="_blank" >Mark</a></td>
-          <td>123</td>
-          <td>law</td>
-          <td>lnc</td>
+	  <td><input id="Origin_id" type="hidden" name="Origin_id" value='123' >123</td>
+	  <td><input id="Content_type" type="hidden" name="Content_type" value="law" >law</td>
+	  <td><input id="Provider" type="hidden" name="Provider" value="lnc" >lnc</td>
           <td>
           	<ul>
 				<label class="radio">
-				  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> 1
+				  <input type="radio" name="Score" id="inlineRadio1" value="1"> 1
 				</label>
 				<label class="radio">
-				  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"> 2
+				  <input type="radio" name="Score" id="inlineRadio2" value="2"> 2
 				</label>
 				<label class="radio">
-				  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3"> 3
+				  <input type="radio" name="Score" id="inlineRadio3" value="3"> 3
 				</label>
 				<label class="radio">
-				  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4"> 4
+				  <input type="radio" name="Score" id="inlineRadio3" value="4"> 4
 				</label>
           	</ul>
           </td>
-          <td><a href="#" class="btn btn-info" role="button">Submit</a></td>
+          <td><button class="btn btn-info"  onclick=scorepost(1); type="button" >Submit</button></td>
         </tr>
+	  </form>
       </tbody>
     </table>
+    <script>
+	function scorepost(id) {
+		var ln = $("#1").serializeArray().length;
+		if (ln != 4){
+			 alert("Score is required!");
+			 return;
+		}
+		$.ajax({
+			type:"post",
+			data:$("#"+id).serialize(),
+			url:'/users',//目标地址
+			success:function(data){
+				alert(data);
+			},
+			error:function(){
+				alert("error");
+			}
+		})
+
+	}
+	</script>
