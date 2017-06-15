@@ -1,4 +1,6 @@
+
 class ProductsController < ApplicationController
-  def show
-  end
-end
+	before_action :authenticate_user!
+	  def show
+	  end
+	end	
