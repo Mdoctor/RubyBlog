@@ -55,11 +55,25 @@
 	  </form>
       </tbody>
     </table>
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" id="myModal" role="dialog" aria-labelledby="mySmallModalLabel">
+	      <div class="modal-dialog modal-sm" role="document">
+		          <div class="modal-content">
+				  <div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <h3 class="modal-title"> Message</h3>
+				  </div>
+				  <div class="modal-body">
+					  <p id="mymess">Success!</p>
+				</div>
+			</div>
+		</div>
+    </div>
     <script>
 	function scorepost(id) {
 		var check = $('input:radio[id="1score"]:checked').val();
 		if (check == null){
-			alert("Score is requireds!")
+				$("#mymess").text("Score is required!")
+				$('#myModal').modal("show")
 			return false;
 			}
 		$.ajax({
@@ -67,11 +81,15 @@
 			data:$("#"+id).serialize(),
 			url:'/users',//目标地址
 			success:function(data){
-				alert("Success");
-				window.location.reload();
+				$("#mymess").text("Success!")
+				$('#myModal').modal("show")
+				$('#myModal').on('hidden.bs.modal', function (e) {
+					window.location.reload();
+					})
 			},
 			error:function(){
-				alert("error");
+				$("#mymess").text("Sorry,failed")
+				$('#myModal').modal("show")
 			}
 		})
 
