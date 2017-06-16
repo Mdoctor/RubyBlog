@@ -1,8 +1,8 @@
 <div class="col-md-2">
   <ul class="nav nav-stacked navbar-default" role="navigation">
-	  <% sidebar = [["show","Score",products_show_path],["myshow","myscored",products_show_path],["allscored","allscored",products_show_path]] %>
+	  <% sidebar = [["show","Score",products_show_path],["myshow","myscored",products_myshow_path],["allscored","allscored",products_allscored_path]] %>
 	  <% for item in sidebar %>
-		  <li <% if item[0] == controller.action_name %>class="active" <% end %>><%= link_to item[1],item[2] %></li><% end -%>
+		  <li <% if item[0] == controller.action_name %>class="list-group-item-info" <% end %>><%= link_to item[1],item[2] %></li><% end -%>
   </ul>
 </div>
 <div class="col-md-10">
@@ -19,7 +19,7 @@
           <th>Content_type</th>
           <th>Provider</th>
           <th>Score</th>
-          <th>Operation</th>
+	  <% if controller.action_name == "show" %><th>Operation</th><% end -%>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +30,7 @@
 	  <td><input id="Origin_id" type="hidden" name="Origin_id" value='123' >123</td>
 	  <td><input id="Content_type" type="hidden" name="Content_type" value="law" >law</td>
 	  <td><input id="Provider" type="hidden" name="Provider" value="lnc" >lnc</td>
+	  <% if controller.action_name == "show"%>
           <td>
           	<ul>
 				<label class="radio">
@@ -46,7 +47,10 @@
 				</label>
           	</ul>
           </td>
-          <td><button class="btn btn-info"  onclick=scorepost(1); type="button" >Submit</button></td>
+	  <td><button class="btn btn-info"  onclick=scorepost(1); type="button" >Submit</button></td>
+	  <% else%>
+		  <td><input id="inlineRadio" type="hidden" name="Score" value="3">3<td>
+	<% end -%>
         </tr>
 	  </form>
       </tbody>

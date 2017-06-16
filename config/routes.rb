@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'products/show'
+  get 'products/myshow'
+  get 'products/allscored'
 
   get 'welcome/index'
 

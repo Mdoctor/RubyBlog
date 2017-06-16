@@ -50,7 +50,7 @@
 		<li><%= link_to "Home", root_path,class: "navbar-brand"  %></li>
 		<% navbar = Hash["products" => products_show_path] %>
 		<% for k , v in navbar %>
-		<li <% if k== controller.controller_name -%> class="active" <% end %>> <%= link_to k, v  %></li>
+		<li <% if k== controller.controller_name -%> class="list-group-item-info" <% end %>> <%= link_to k, v  %></li>
 		<% end -%>
 	  </ul>
           <ul class="nav navbar-nav navbar-right">
