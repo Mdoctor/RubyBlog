@@ -1,5 +1,5 @@
 
-class ProductsController < ApplicationController
+class RatingController < ApplicationController
 	before_action :authenticate_user!
 	  def show
 		  # @posts = Post.paginate(:page => params[:page], :per_page => 30)
@@ -12,4 +12,8 @@ class ProductsController < ApplicationController
 	  def allscored
 		  render "show"
 	  end
+	  
+	  def querys
+		  render "querys"
+          end
 	end	

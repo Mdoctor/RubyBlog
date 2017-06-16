@@ -1,13 +1,13 @@
 <div class="col-md-2">
   <ul class="nav nav-stacked navbar-default" role="navigation">
-	  <% sidebar = [["show","Score",products_show_path],["myshow","myscored",products_myshow_path],["allscored","allscored",products_allscored_path]] %>
+	  <% sidebar = [["show","Score",rating_show_path],["myshow","myscored",rating_myshow_path],["allscored","allscored",rating_allscored_path]] %>
 	  <% for item in sidebar %>
 		  <li <% if item[0] == controller.action_name %>class="list-group-item-info" <% end %>><%= link_to item[1],item[2] %></li><% end -%>
   </ul>
 </div>
 <div class="col-md-10">
 <div class="page-header">
-	<h1>Products</h1>
+	<h1><%= params[:query]%></h1>
 </div>
 
 <table class="table table-hover">
@@ -34,16 +34,16 @@
           <td>
           	<ul>
 				<label class="radio">
-				  <input type="radio" name="Score" id="inlineRadio1" value="1"> 1
+				  <input type="radio" name="Score" id="1score" value="1"> 1
 				</label>
 				<label class="radio">
-				  <input type="radio" name="Score" id="inlineRadio2" value="2"> 2
+				  <input type="radio" name="Score" id="1score" value="2"> 2
 				</label>
 				<label class="radio">
-				  <input type="radio" name="Score" id="inlineRadio3" value="3"> 3
+				  <input type="radio" name="Score" id="1score" value="3"> 3
 				</label>
 				<label class="radio">
-				  <input type="radio" name="Score" id="inlineRadio3" value="4"> 4
+				  <input type="radio" name="Score" id="1score" value="4"> 4
 				</label>
           	</ul>
           </td>
@@ -57,17 +57,18 @@
     </table>
     <script>
 	function scorepost(id) {
-		var ln = $("#1").serializeArray().length;
-		if (ln != 4){
-			 alert("Score is required!");
-			 return;
-		}
+		var check = $('input:radio[id="1score"]:checked').val();
+		if (check == null){
+			alert("Score is requireds!")
+			return false;
+			}
 		$.ajax({
 			type:"post",
 			data:$("#"+id).serialize(),
 			url:'/users',//目标地址
 			success:function(data){
 				alert("Success");
+				window.location.reload();
 			},
 			error:function(){
 				alert("error");

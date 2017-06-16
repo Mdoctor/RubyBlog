@@ -48,7 +48,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
 		<li><%= link_to "Home", root_path,class: "navbar-brand"  %></li>
-		<% navbar = Hash["products" => products_show_path] %>
+		<% navbar = Hash["Rating" => rating_query_path] %>
 		<% for k , v in navbar %>
 		<li <% if k== controller.controller_name -%> class="list-group-item-info" <% end %>> <%= link_to k, v  %></li>
 		<% end -%>
