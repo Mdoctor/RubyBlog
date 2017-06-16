@@ -1,3 +1,11 @@
+<div class="col-md-2">
+  <ul class="nav nav-stacked navbar-default" role="navigation">
+	  <% sidebar = [["show","Score",products_show_path],["myshow","myscored",products_show_path],["allscored","allscored",products_show_path]] %>
+	  <% for item in sidebar %>
+		  <li <% if item[0] == controller.action_name %>class="active" <% end %>><%= link_to item[1],item[2] %></li><% end -%>
+  </ul>
+</div>
+<div class="col-md-10">
 <div class="page-header">
 	<h1>Products</h1>
 </div>
@@ -64,3 +72,4 @@
 
 	}
 	</script>
+	</div>
