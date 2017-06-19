@@ -11,7 +11,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614091835) do
+ActiveRecord::Schema.define(version: 20170619063422) do
+
+  create_table "apis", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "url",        limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "origin_id",    limit: 255
+    t.string   "content_type", limit: 255
+    t.integer  "provider",     limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "queries", force: :cascade do |t|
+    t.string   "value",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "queries_tasks", force: :cascade do |t|
+    t.integer  "query_id",   limit: 4
+    t.integer  "task_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "query_document_pairs", force: :cascade do |t|
+    t.integer  "query_id",    limit: 4
+    t.integer  "document_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "query_document_pair_id", limit: 4
+    t.integer  "score",                  limit: 4
+    t.integer  "user_id",                limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.integer  "query_id",    limit: 4
+    t.integer  "document_id", limit: 4
+    t.integer  "api_id",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "iteration_id", limit: 255
+    t.integer  "api_id",       limit: 4
+    t.string   "callback",     limit: 255
+    t.integer  "status",       limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
