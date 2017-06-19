@@ -200,7 +200,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
-  mechanize
+  mechanize (~> 2.7.5)
   mysql2
   rails (= 4.2.7.1)
   sass-rails (~> 5.0)
